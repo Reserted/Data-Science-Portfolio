@@ -1,0 +1,15 @@
+# Site builder (Jupyter Book 2 / MyST)
+jupyter-book>=2.1,<3
+
+# Notebook execution
+ipykernel>=6.29
+
+# Analysis stack used by projects/customer-churn.ipynb
+numpy>=2.0
+pandas>=2.2
+matplotlib>=3.9
+
+# Add what your own projects need, e.g.:
+# scikit-learn>=1.5
+# seaborn>=0.13
+# statsmodels>=0.14

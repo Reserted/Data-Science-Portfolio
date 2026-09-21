@@ -1,0 +1,20 @@
+# Jupyter Book / MyST build output
+_build/
+.myst/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Secrets — never commit credentials
+.env
+*.key

@@ -1,0 +1,44 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: 9f963b69-0509-428d-8380-80ca39c335b6
+  title: Eleijah — Data Science Portfolio
+  description: End-to-end machine learning and data work — spirometry assessment, draft-based match prediction, and YouTube niche research.
+  keywords: [data science, machine learning, analytics, python, portfolio]
+  authors:
+    - name: Eleijahmar Fifth C. Sevare
+      email: sevare.eleijahmar@gmail.com
+      affiliations:
+        - University Of Science and Technology of Southern Philippines
+  # Uncomment and point at your repo to get "edit this page" + source links:
+  # github: https://github.com/<your-username>   # set this for "edit this page" links
+  license: CC-BY-4.0
+  toc:
+    - file: index.md
+    - file: about.md
+    - title: Projects
+      children:
+        - file: projects.md
+        - file: projects/respira.md
+        - file: projects/mlbb-draft-predictor.md
+        - file: projects/spectrums-finds.md
+site:
+  template: book-theme
+  title: Eleijah — Portfolio
+  description: End-to-end machine learning and data work by Eleijah Sevare, BS Data Science at USTP.
+  nav:
+    - title: Projects
+      url: /projects
+    - title: About
+      url: /about
+  actions:
+    - title: LinkedIn
+      url: https://linkedin.com/in/eleijah-sevare
+  options:
+    logo_text: sevare
+    # favicon: public/favicon.ico
+    # logo: public/logo.png
+    hide_outline: false
+    hide_toc: false
+    style: style.css
+

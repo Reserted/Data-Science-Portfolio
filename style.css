@@ -1,0 +1,21 @@
+.myst-fm-block-title {
+    font-weight: 400 !important;
+    letter-spacing: -0.08em;
+}
+.heading-text {
+    font-weight: 300 !important;
+    letter-spacing: -0.04em;
+}
+.myst-card-title {
+    font-weight: 300 !important;
+    letter-spacing: -0.02em;
+}
+
+.myst-toc-item {
+    font-weight: 400 !important;
+    letter-spacing: -0.02em;
+}
+.myst-home-link span {
+    font-weight: 400 !important;
+    letter-spacing: -0.06em;
+}
