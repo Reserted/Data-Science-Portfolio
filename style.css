@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* Rene: the display face (headings, blockquotes). One weight, 400.
-   MyST copies this stylesheet to _build/html/build/ but not the font file, so the
-   deploy workflow copies public/fonts/Rene-Regular.woff2 to build/fonts/ beside it.
+   MyST copies this stylesheet (to _build/html/_public/) but not the font file, so the
+   deploy workflow copies public/fonts/Rene-Regular.woff2 to fonts/ beside it.
    local() first so the dev server (`jupyter book start`, which has no copy step)
    still shows it on a machine with Rene installed. */
 @font-face {

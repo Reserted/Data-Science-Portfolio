@@ -36,9 +36,15 @@ jobs:
         run: jupyter book build --html --execute
 
       - name: Copy the display font next to the stylesheet
-        # style.css is emitted as build/style-<hash>.css and loads ./fonts/Rene-Regular.woff2;
-        # MyST copies the stylesheet but not the font it references.
-        run: mkdir -p _build/html/build/fonts && cp public/fonts/Rene-Regular.woff2 _build/html/build/fonts/
+        # style.css is emitted as <dir>/style-<hash>.css (dir has changed between MyST
+        # versions: build/, _public/) and loads ./fonts/Rene-Regular.woff2; MyST copies
+        # the stylesheet but not the font it references, so put the font beside it.
+        run: |
+          for css in $(find _build/html -name 'style-*.css'); do
+            mkdir -p "$(dirname "$css")/fonts"
+            cp public/fonts/Rene-Regular.woff2 "$(dirname "$css")/fonts/"
+          done
+          test -n "$(find _build/html -path '*/fonts/Rene-Regular.woff2')"
 
       - uses: actions/upload-pages-artifact@v3
         with:
