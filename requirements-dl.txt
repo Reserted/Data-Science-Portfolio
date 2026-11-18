@@ -1,0 +1,13 @@
+# Environment for the deep-learning notebooks (activities/ and blog/).
+# Not installed in CI: those notebooks are published with committed outputs.
+# CUDA build used locally: pip install torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cu118
+torch==2.7.1
+torchvision==0.22.1
+lightning==2.6.6
+torchmetrics==1.9.0
+scikit-learn==1.9.1
+numpy
+pandas
+matplotlib
+pillow
+ipykernel

@@ -1,21 +1,334 @@
-.myst-fm-block-title {
-    font-weight: 400 !important;
-    letter-spacing: -0.08em;
-}
-.heading-text {
-    font-weight: 300 !important;
-    letter-spacing: -0.04em;
-}
-.myst-card-title {
-    font-weight: 300 !important;
-    letter-spacing: -0.02em;
+/* @import must come before every other rule, or browsers silently drop it. */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* Rene: the display face (headings, blockquotes). One weight, 400.
+   MyST copies this stylesheet to _build/html/build/ but not the font file, so the
+   deploy workflow copies public/fonts/Rene-Regular.woff2 to build/fonts/ beside it.
+   local() first so the dev server (`jupyter book start`, which has no copy step)
+   still shows it on a machine with Rene installed. */
+@font-face {
+  font-family: 'Rene';
+  src: local('ReneRegular'), local('Rene-Regular'),
+       url('./fonts/Rene-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-.myst-toc-item {
-    font-weight: 400 !important;
-    letter-spacing: -0.02em;
+/* ============================================================
+   Ink & Signal — editorial lab-notebook skin for MyST book-theme
+   Loaded after the theme stylesheet, so plain selectors win.
+   !important appears only where a Tailwind utility class
+   (.bg-white, .text-slate-*) outranks an element selector.
+   ============================================================ */
+
+:root {
+  --font-display: 'Rene', Georgia, serif;
+  --font-sans: system-ui, sans-serif;
+  --font-accent: 'Rene', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --bg:      #EEF1F4;
+  --bg-2:    #E1E6EC;
+  --fg:      #11161D;
+  --fg-dim:  #57616D;
+  --rule:    #CBD3DC;
+  --accent:  #3457D5;
+  --grain:   rgba(17, 22, 29, 0.045);
+}
+
+html.dark {
+  --bg:      #0A0D12;
+  --bg-2:    #121721;
+  --fg:      #DBE1E8;
+  --fg-dim:  #7C8794;
+  --rule:    #232B37;
+  --accent:  #6E8FFF;
+  --grain:   rgba(219, 225, 232, 0.045);
+}
+
+/* ---------- ground ---------- */
+
+body {
+  background-color: var(--bg) !important;
+  color: var(--fg) !important;
+  font-family: var(--font-sans);
+  font-size: 16.5px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hairline grid on the paper — 1px lines, no image, no request.
+   Painted as body background layers rather than a fixed pseudo-element: a masked
+   fixed layer underneath the nav's backdrop-blur repaints on every scroll frame
+   and flickers. The top gradient layer fades the grid out down the page. */
+body {
+  background-image:
+    linear-gradient(to bottom, transparent 0, var(--bg) 70%),
+    repeating-linear-gradient(to right, var(--grain) 0 1px, transparent 1px 88px),
+    repeating-linear-gradient(to bottom, var(--grain) 0 1px, transparent 1px 88px);
+  background-attachment: fixed;
+}
+
+::selection { background: var(--accent); color: var(--bg); }
+
+/* ---------- type ---------- */
+
+h1, h2, h3, h4,
+.myst-fm-block-title, .myst-card-title {
+  font-family: var(--font-display);
+  font-weight: 400 !important; /* Rene only ships at 400 */
+  letter-spacing: -0.02em;
+  color: var(--fg) !important;
+}
+
+/* Page title as a hero slab. */
+.myst-fm-block {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1rem;
+  margin-bottom: 1.75rem !important;
+}
+.myst-fm-block-title {
+  margin: 0 0 0.4rem !important;
+  font-size: clamp(2.75rem, 8vw, 3.5rem) !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.025em !important;
+}
+.myst-fm-block-subtitle {
+  margin: 0 !important;
+  font-family: var(--font-mono);
+  font-size: 1rem !important;
+  letter-spacing: -.05em;
+  color: var(--fg-dim) !important;
+  line-height: 1.5 !important;
+}
+.myst-fm-block p {
+  margin: 0 !important;
+}
+
+/* NOTE: the theme sets `.article-grid > * { margin-top: 0 !important }` on every
+   direct child of the article grid, so headings are spaced with padding, never
+   margin. */
+.article h1 {
+  margin: 0 !important;
+  font-size: clamp(2rem, 4vw, 2.8rem) !important;
+  letter-spacing: -0.03em !important;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+.article h2 {
+  margin: 0 !important;
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem) !important;
+  letter-spacing: -0.03em !important;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+.article h3 { margin: 0 !important; font-size: 1.35rem !important; padding: 1rem 0 0.25rem; }
+
+.article p, .article li { color: var(--fg) !important; line-height: 1.65 !important; }
+
+/* Definition-list terms (About page) were theme blue + bold: they read as links. */
+.article dt strong { color: var(--fg) !important; }
+
+.article a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.article a:hover { color: var(--accent) !important; }
+
+.article blockquote {
+  font-family: var(--font-accent);
+  font-size: 1.2rem;
+  line-height: 1.4;
+  border-left: 2px solid var(--accent);
+  color: var(--fg-dim) !important;
+}
+
+.article strong { font-weight: 600; }
+.article code { font-family: var(--font-mono); font-size: 0.85em; }
+/* Wide equations (the lab matrices) scroll inside themselves instead of widening a phone page. */
+.article .katex-display { overflow-x: auto; overflow-y: hidden; }
+
+/* Inline code was the theme's pink, the one colour outside the palette. */
+.article :not(pre) > code {
+  color: var(--fg) !important;
+  background: var(--bg-2);
+  padding: 0.1em 0.3em;
+}
+
+/* ---------- cards ---------- */
+
+.myst-card {
+  background: transparent !important;
+  border: 1px solid var(--rule) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  position: relative;
+  overflow: hidden;
+  transition: border-color .25s ease, transform .25s ease;
+}
+a.myst-card::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform .3s cubic-bezier(.2,.8,.2,1);
+}
+/* Hover only on cards that are links; the About skill cards are not. */
+a.myst-card:hover { border-color: var(--fg-dim) !important; transform: translateY(-3px); }
+a.myst-card:hover::after { transform: scaleY(1); }
+.myst-card-title {
+  font-size: 1.15rem !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.02em !important;
+}
+/* The `:header:` strip was theme grey-50 / navy in dark mode. */
+.myst-card-header {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: transparent !important;
+  border-color: var(--rule) !important;
+}
+.article .myst-card-header p { color: var(--fg-dim) !important; margin: 0; }
+
+/* ---------- chrome: nav, sidebar, footer ---------- */
+
+/* NOTE: at the xl breakpoint `.myst-primary-sidebar` is a full-width, z-10,
+   pointer-events-none grid overlay — only its `-pointer` child is visible, in the
+   left margin column. Giving the overlay itself a background paints an opaque
+   sheet over the entire article on any window wide enough to hit xl. */
+.myst-primary-sidebar { background-color: transparent !important; }
+.myst-top-nav, .myst-primary-sidebar-pointer {
+  background-color: var(--bg) !important;
+  border-color: var(--rule) !important;
 }
 .myst-home-link span {
-    font-weight: 400 !important;
-    letter-spacing: -0.06em;
+  font-family: var(--font-mono) !important;
+  font-weight: 500 !important;
+  text-transform: lowercase;
+  letter-spacing: -0.04em !important; /* tighter and the glyphs overlap */
+  font-size: 2rem;
 }
+/* No lowercase transform: it turned RESPIRA, MLBB and ResNet into respira, mlbb, resnet. */
+.myst-toc-item, .myst-toc a {
+  font-family: var(--font-mono) !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 0 !important;
+  border-radius: 0 !important;
+}
+.myst-toc-item:hover { background: var(--bg-2) !important; }
+.myst-toc-item-exact { background: var(--bg-2) !important; color: var(--accent) !important; }
+
+/* Theme panels that ignored the palette: white / stone-900 outline, slate search box. */
+.myst-outline { background: var(--bg) !important; }
+.myst-search-bar { background: transparent !important; border-color: var(--rule) !important; }
+.myst-made-with-myst { opacity: 0.35; }
+.myst-footer-link {
+  border: 1px solid var(--rule) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+/* ---------- tables ---------- */
+
+.article table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+.article th {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  /* no text-align: headers follow the column alignment set in the Markdown table */
+  color: var(--fg-dim) !important;
+  border-bottom: 1px solid var(--fg) !important;
+  padding: 0.4rem 0.6rem;
+}
+.article td { border-bottom: 1px solid var(--rule) !important; padding: 0.4rem 0.6rem; }
+.article tr:hover td { background: var(--bg-2); }
+
+/* ---------- admonitions ---------- */
+
+.myst-admonition {
+  border-radius: 0 !important;
+  border: 1px solid var(--rule) !important;
+  border-left: 2px solid var(--accent) !important;
+  background: var(--bg-2) !important;
+  box-shadow: none !important;
+}
+.myst-admonition-header {
+  background: transparent !important;
+  color: var(--fg) !important;
+  font-family: var(--font-mono);
+  font-size: 0.7rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid var(--rule);
+}
+.myst-admonition-header-icon { color: var(--accent) !important; }
+
+/* ---------- motion: one-shot reveal on load ----------
+   Deliberately NOT scroll-driven. `animation-timeline: view()` is a scrubbed
+   timeline — scrolling back up plays it in reverse, which reads as flickering.
+   Making it fire once needs an IntersectionObserver, and this stylesheet is the
+   only hook the theme gives us, so: a short entrance on load instead. */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* `article.article`, not `.article`: the navbar's right-hand slot also carries the
+     `article` class, and the reveal left the Plain button faded and shifted down. */
+  article.article { animation: reveal 0.45s ease both; }
+  .myst-card { animation: reveal 0.5s ease both; }
+  .myst-card:nth-child(2) { animation-delay: 0.07s; }
+  .myst-card:nth-child(3) { animation-delay: 0.14s; }
+  .myst-card:nth-child(4) { animation-delay: 0.21s; }
+  .myst-card:nth-child(5) { animation-delay: 0.28s; }
+}
+/* `translate`, not `transform`: a filled animation outranks normal rules, so animating
+   `transform` pinned it to `none` and killed the card hover lift. */
+@keyframes reveal {
+  from { opacity: 0; translate: 0 16px; }
+  to   { opacity: 1; translate: none; }
+}
+/* ---------- plain mode ----------
+   `html.plain` is set by public/plain-toggle.mjs (which also styles its own button — it
+   renders in a shadow root, out of this file's reach) (see myst.yml `parts.navbar_end`).
+   It drops the display serif, the paper grain, the mono small-caps chrome and
+   the entrance animation — i.e. everything that makes this look like a zine
+   instead of a website. */
+
+html.plain {
+  --font-display: var(--font-sans);
+  --font-accent:  var(--font-sans);
+  --grain: transparent;
+}
+
+html.plain body { background-image: none; }
+
+html.plain h1, html.plain h2, html.plain h3, html.plain h4,
+html.plain .myst-fm-block-title, html.plain .myst-card-title {
+  font-weight: 600 !important;
+  letter-spacing: normal !important;
+}
+html.plain .myst-fm-block-title { font-size: clamp(2rem, 5vw, 2.5rem) !important; }
+
+/* The mono + uppercase + wide-tracking treatment on nav, TOC, table headers,
+   card headers and admonition headers is the other half of the "editorial" read. */
+html.plain .myst-fm-block-subtitle,
+html.plain .myst-home-link span,
+html.plain .myst-toc-item, html.plain .myst-toc a,
+html.plain .myst-card-header,
+html.plain .article th,
+html.plain .myst-admonition-header {
+  font-family: var(--font-sans) !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+html.plain .myst-home-link span { font-size: 1.15rem; font-weight: 600 !important; }
+html.plain .myst-card-header, html.plain .article th,
+html.plain .myst-admonition-header { font-size: 0.8rem !important; }
+
+html.plain .article blockquote { font-size: 1.05rem; line-height: 1.6; }
+
+html.plain article.article, html.plain .myst-card { animation: none !important; }
+html.plain a.myst-card:hover { transform: none !important; }
+html.plain .myst-card::after { display: none; }

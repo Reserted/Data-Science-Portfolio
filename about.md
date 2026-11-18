@@ -1,66 +1,57 @@
 ---
 title: About
-description: Data Science student at USTP — machine learning end to end, from acquisition to something people can use.
+description: Data Science student at USTP building ML projects end to end, from data pipelines to deployed apps.
 ---
 
 ## Background
 
-I'm a BS Data Science student at the University of Science and Technology of Southern
-Philippines in Cagayan de Oro, graduating 2027. I take machine-learning work end to
-end — data acquisition, cleaning, feature engineering, model training, and honest
-evaluation — and ship it as something people can actually use.
+Data Science student at USTP, graduating 2027. I build ML projects end to end: collecting and cleaning data, training and evaluating models, and shipping them as something people can use.
 
-The through-line in my projects is that the model is the middle of the job, not the
-end of it. RESPIRA needed a mobile app around the classifier before a clinician could
-touch it. The MLBB predictor needed a Liquipedia ingestion pipeline before there was
-anything to model, and a proportional-chance baseline before the accuracy number meant
-anything. Spectrum's Finds needed a background fetch worker and export formats before
-the outlier scoring was useful to anyone.
+RESPIRA puts a classifier inside a mobile app for clinicians. My MLBB predictor runs on a Liquipedia data pipeline and is measured against a proportional-chance baseline. Spectrum's Finds pairs outlier scoring with a background fetch worker and data exports.
 
-Looking for a **data science or ML engineering internship**.
+Looking for a data science or ML engineering internship.
 
 ## Education
 
-**BS in Data Science — University of Science and Technology of Southern Philippines** · _Expected 2027_
+**BS in Data Science, University of Science and Technology of Southern Philippines** · _Expected 2027_
 : Coursework: databases, linear and nonlinear models, computational statistics,
   machine learning, data structures.
 
 ## Leadership & Activities
 
-**Associate Secretary — Guild of Junior Data Scientists, USTP–CDO** · _Aug 2023 – May 2024_
-: Managed organisational documentation, drafted official communications, and
-  coordinated the Data Talks event with industry professionals and student members.
+**Associate Secretary, Guild of Junior Data Scientists, USTP-CDO** · _Aug 2023 – May 2024_
+: Handled documentation and official communications; coordinated Data Talks
+  with industry professionals and student members.
 
-**Secretariat Member — University Student Government, Office of the Vice President, USTP** · _Aug 2023 – May 2024_
-: Supported internal communications by documenting meetings, managing social media
-  updates, and producing publication materials; contributed to the redesign of the
-  office's visual identity.
+**Secretariat Member, University Student Government (Office of the VP), USTP** · _Aug 2023 – May 2024_
+: Documented meetings, managed social media updates, and produced publication
+  materials; helped redesign the office's visual identity.
 
 ## Skills
 
-::::{grid} 1 1 3 3
+::::{grid} 1 1 2 2
 
 :::{card} Machine Learning
 scikit-learn; regression, classification, clustering, feature engineering,
-hyperparameter tuning, model evaluation and interpretability.
+hyperparameter tuning, model evaluation and interpretability. LLM APIs, RAG pipelines.
 :::
 
-:::{card} Python
-pandas, NumPy, matplotlib, Jupyter, yt-dlp; API ingestion and data pipelines.
+:::{card} Python & Data
+pandas, NumPy, matplotlib, Jupyter; API ingestion and data pipelines.
 :::
 
-:::{card} Data & Query
-SQL — joins, aggregation, window functions. Data cleaning and exploratory analysis.
+:::{card} SQL
+Joins, aggregation, window functions; data cleaning and exploratory analysis.
 :::
 
-:::{card} Other
-JavaScript, HTML, CSS, Git, LLM APIs.
+:::{card} Apps & Deployment
+Flutter, JavaScript, HTML, CSS, Supabase, Vercel, Docker, Git.
 :::
 
 ::::
 
 ## Contact
 
-- Email — [sevare.eleijahmar@gmail.com](mailto:sevare.eleijahmar@gmail.com)
-- LinkedIn — [in/eleijah-sevare](https://linkedin.com/in/eleijah-sevare)
+- Email: [sevare.eleijahmar@gmail.com](mailto:sevare.eleijahmar@gmail.com)
+- LinkedIn: [in/eleijah-sevare](https://linkedin.com/in/eleijah-sevare)
 - Based in Cagayan de Oro, Philippines

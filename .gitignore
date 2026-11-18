@@ -9,6 +9,15 @@ __pycache__/
 venv/
 .ipynb_checkpoints/
 
+# Deep-learning datasets, checkpoints and logs (re-downloaded / re-created by the notebooks)
+lab/data/
+lab/logs/
+lab/model/
+# Raw course materials as downloaded; completed versions live in lab/
+activities/
+blog/**/data/
+lightning_logs/
+
 # OS / editor
 .DS_Store
 Thumbs.db
@@ -18,3 +27,9 @@ Thumbs.db
 # Secrets — never commit credentials
 .env
 *.key
+
+# Fonts not licensed for public redistribution (unused by style.css)
+public/fonts/*.otf
+
+# Private review notes, not part of the site
+DESIGN-AUDIT.md

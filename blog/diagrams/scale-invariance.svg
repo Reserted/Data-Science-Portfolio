@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 380" width="860" height="380" role="img" aria-label="Geometry of an SGD step on scale-invariant weights">
+<title>Geometry of an SGD step on scale-invariant weights</title>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6470"/></marker><marker id="arrow-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1d232b"/></marker><marker id="arrow-res" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1baf7a"/></marker><marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b3261e"/></marker>
+</defs>
+<rect width="860" height="380" fill="#fcfcfb"/>
+<text x="20" y="30" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#1d232b" text-anchor="start" font-weight="bold" font-style="normal">One SGD step on weights that feed a BatchNorm layer</text>
+<circle cx="70" cy="320" r="3.5" fill="#1d232b"/>
+<text x="58" y="338" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" fill="#5b6470" text-anchor="middle" font-weight="normal" font-style="normal">0</text>
+<path d="M 70 320 L 310 140 L 382 236 Z" fill="#e2f3eb" opacity="0.6"/>
+<line x1="70" y1="320" x2="310" y2="140" stroke="#1d232b" stroke-width="2.2" marker-end="url(#arrow-ink)"/>
+<line x1="70" y1="320" x2="382" y2="236" stroke="#1baf7a" stroke-width="2.2" marker-end="url(#arrow-res)"/>
+<line x1="310" y1="140" x2="382" y2="236" stroke="#b3261e" stroke-width="2" marker-end="url(#arrow-red)"/>
+<path d="M 300.4 147.2 L 307.6 156.8 L 317.2 149.6" fill="none" stroke="#5b6470" stroke-width="1"/>
+<text x="240" y="144" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" fill="#1d232b" text-anchor="middle" font-weight="normal" font-style="italic">w</text>
+<text x="398" y="256" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" fill="#1baf7a" text-anchor="start" font-weight="normal" font-style="italic">w′</text>
+<text x="356" y="180" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#b3261e" text-anchor="start" font-weight="normal" font-style="normal">−η ∇L(w)</text>
+<text x="356" y="198" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" fill="#5b6470" text-anchor="start" font-weight="normal" font-style="normal">(orthogonal to w)</text>
+<text x="140" y="302" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#5b6470" text-anchor="middle" font-weight="normal" font-style="italic">θ</text>
+<path d="M 122 281 A 65 65 0 0 1 132 303" fill="none" stroke="#5b6470"/>
+<text x="470" y="70" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#1d232b" text-anchor="start" font-weight="bold" font-style="normal">Scale invariance</text>
+<text x="470" y="95" font-family="Menlo, Consolas, DejaVu Sans Mono, monospace" font-size="13" fill="#1d232b" text-anchor="start" font-weight="normal" font-style="normal" xml:space="preserve">L(c·w) = L(w) for every c &gt; 0</text>
+<text x="470" y="119" font-family="Menlo, Consolas, DejaVu Sans Mono, monospace" font-size="13" fill="#1d232b" text-anchor="start" font-weight="normal" font-style="normal" xml:space="preserve">⇒  w · ∇L(w) = 0         (gradient ⟂ w)</text>
+<text x="470" y="143" font-family="Menlo, Consolas, DejaVu Sans Mono, monospace" font-size="13" fill="#1d232b" text-anchor="start" font-weight="normal" font-style="normal" xml:space="preserve">⇒  ∇L(c·w) = ∇L(w) / c</text>
+<text x="470" y="184" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" fill="#1d232b" text-anchor="start" font-weight="bold" font-style="normal">So every step lengthens w</text>
+<text x="470" y="209" font-family="Menlo, Consolas, DejaVu Sans Mono, monospace" font-size="13" fill="#1d232b" text-anchor="start" font-weight="normal" font-style="normal" xml:space="preserve">‖w′‖² = ‖w‖² + η²‖∇L(w)‖²</text>
+<text x="470" y="233" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" fill="#5b6470" text-anchor="start" font-weight="normal" font-style="normal">and turns its direction by</text>
+<text x="470" y="256" font-family="Menlo, Consolas, DejaVu Sans Mono, monospace" font-size="13" fill="#1d232b" text-anchor="start" font-weight="normal" font-style="normal" xml:space="preserve">θ ≈ η‖∇L(ŵ)‖ / ‖w‖²,  ŵ = w / ‖w‖</text>
+<text x="470" y="297" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" fill="#5b6470" text-anchor="start" font-weight="normal" font-style="normal">A large η inflates ‖w‖, which shrinks the</text>
+<text x="470" y="320" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="12" fill="#5b6470" text-anchor="start" font-weight="normal" font-style="normal">next turn: the effective step corrects itself.</text>
+<text x="470" y="343" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" fill="#5b6470" text-anchor="start" font-weight="normal" font-style="normal">Plain SGD shown; momentum blurs, not breaks, it.</text>
+</svg>

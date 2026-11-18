@@ -35,6 +35,11 @@ jobs:
           BASE_URL: /${{ github.event.repository.name }}
         run: jupyter book build --html --execute
 
+      - name: Copy the display font next to the stylesheet
+        # style.css is emitted as build/style-<hash>.css and loads ./fonts/Rene-Regular.woff2;
+        # MyST copies the stylesheet but not the font it references.
+        run: mkdir -p _build/html/build/fonts && cp public/fonts/Rene-Regular.woff2 _build/html/build/fonts/
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./_build/html

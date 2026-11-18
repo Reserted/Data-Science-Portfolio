@@ -5,23 +5,51 @@ project:
   title: Eleijah — Data Science Portfolio
   description: End-to-end machine learning and data work — spirometry assessment, draft-based match prediction, and YouTube niche research.
   keywords: [data science, machine learning, analytics, python, portfolio]
-  authors:
-    - name: Eleijahmar Fifth C. Sevare
-      email: sevare.eleijahmar@gmail.com
-      affiliations:
-        - University Of Science and Technology of Southern Philippines
-  # Uncomment and point at your repo to get "edit this page" + source links:
-  # github: https://github.com/<your-username>   # set this for "edit this page" links
+  # No project-wide `authors`: it printed a byline + affiliation under every page title,
+  # including the home page that already carries the name. Blog posts set their own.
+  # Repo link: adds "edit this page" + source links to every page.
+  github: https://github.com/Reserted/Data-Science-Portfolio
   license: CC-BY-4.0
+  # In-browser Python. `lite` boots a Pyodide kernel client-side, so every code
+  # cell on the site is runnable with no server and no Binder round-trip.
+  thebe:
+    lite: true
   toc:
     - file: index.md
     - file: about.md
-    - title: Projects
+    - file: projects.md
       children:
-        - file: projects.md
         - file: projects/respira.md
         - file: projects/mlbb-draft-predictor.md
         - file: projects/spectrums-finds.md
+        - file: projects/customer-churn.ipynb
+        - file: projects/sales-forecasting.md
+    - file: lab.md
+      children:
+        - file: lab/linear-regression.ipynb
+        # Deep-learning coursework. These need PyTorch + a GPU, so they carry
+        # `execute: {skip: true}` and the site renders their committed outputs.
+        - file: lab/B - Understanding Deep Learning.ipynb
+        - file: lab/C - PyTorch Basics.ipynb
+        - file: lab/E1 - CNN Implementation.ipynb
+        - file: lab/Pokemon Classification.ipynb
+    - file: blog.md
+      children:
+        # One hyperparameter per post, each with the Colab notebook that made its figures.
+        # The notebooks need a GPU, so they carry `execute: {skip: true}`.
+        - file: blog/jupyter-book-site/jupyter-book-site.md
+        - file: blog/learning-rate/learning-rate.md
+          children:
+            - file: blog/learning-rate/learning-rate-colab.ipynb
+        - file: blog/batch-size/batch-size.md
+          children:
+            - file: blog/batch-size/batch-size-colab.ipynb
+        - file: blog/dropout/dropout.md
+          children:
+            - file: blog/dropout/dropout-colab.ipynb
+        
+        # weight-decay.md is written up to its prediction but has no results yet;
+        # add blog/weight-decay/ back (post + Colab child) once its figures/ folder exists.
 site:
   template: book-theme
   title: Eleijah — Portfolio
@@ -29,8 +57,20 @@ site:
   nav:
     - title: Projects
       url: /projects
+    - title: Lab
+      url: /lab
+    - title: Blog
+      url: /blog
     - title: About
       url: /about
+  parts:
+    # The "plain" button, in the top navbar on every page. An anywidget module
+    # is the supported way to run custom JS here — raw HTML and <script> in a
+    # part get stripped to text. It only toggles `plain` on <html>; style.css
+    # does the rest.
+    navbar_end: |
+      :::{anywidget} public/plain-toggle.mjs
+      :::
   actions:
     - title: LinkedIn
       url: https://linkedin.com/in/eleijah-sevare
